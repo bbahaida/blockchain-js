@@ -27,7 +27,7 @@ class Blockchain{
     createNewTransaction(amount, sender, recipient) {
         const newTransaction = new Transaction(amount, sender, recipient);
         this.pendingTransactions.push(newTransaction);
-        return this.getLastBlock() ? this.getLastBlock()['index'] + 1 : 1;
+        return this.getLastBlock()['index'] + 1;
     }
 
     hashBlock(previousBlockHash, currentBlockData, nonce){
@@ -39,11 +39,15 @@ class Blockchain{
         let nonce = 0;
         let hash = this.hashBlock(previousBlockHash,currentBlockData, nonce);
 
-        while(hash.substring(0,4) !== '0000'){
+        while(hash.substring(0,2) !== '00'){
             nonce++;
             hash = this.hashBlock(previousBlockHash,currentBlockData, nonce);
         }
         return nonce;
+    }
+
+    getNonce(){
+        return this.proofOfWork(this.getLastBlock().hash, this.pendingTransactions);
     }
 }
 
