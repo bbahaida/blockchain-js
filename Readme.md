@@ -1,1 +1,1 @@
-# Blockchain using JS ES5
+# Blockchain using JS ES6
