@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "node ./dev/test.js",
-    "dev": "nodemon --watch dev -e js ./dev/api.js",
-    "start": "node ./api.js"
+    "node_1": "nodemon --watch dev -e js ./dev/network-node.js 3001 http://localhost:3001",
+    "node_2": "nodemon --watch dev -e js ./dev/network-node.js 3002 http://localhost:3002",
+    "node_3": "nodemon --watch dev -e js ./dev/network-node.js 3003 http://localhost:3003",
+    "start": "node ./dev/network-node.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +17,11 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "nodemon": "^1.18.3",
+    "request": "^2.88.0",
     "sha256": "^0.2.0",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "request-promise": "^4.2.2"
   }
 }
